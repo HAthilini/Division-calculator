@@ -1,50 +1,18 @@
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.*;
-class Calculator extends JFrame{
-	private JTextField text1;
-	private JTextField text2;
-	private JTextField text3;	
-	private JButton equalButton;
-	
-	public Calculator(){
-		setLayout(new FlowLayout());
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		setLocationRelativeTo(null);
-		text1=new JTextField(6);
+class example{
+	public static void main(String args[]){
+		System.out.println("Start");
 		
-		add(text1);
-		add(new JLabel("/"));
-		text2=new JTextField(6);
-		add(text2);
-		equalButton=new JButton("=");
-		equalButton.addActionListener(new ActionListener(){
-			public void actionPerformed(ActionEvent evt){
-				int num1=Integer.parseInt(text1.getText());
-				int num2=Integer.parseInt(text2.getText());
-				int result=0;
-				try{
-					result=num1/num2;
-				}catch(ArithmeticException ob){
-					JOptionPane.showMessageDialog(null,"Wrong number");
-					text2.setText("");
-					text2.requestFocus();
-					return;
-				}
-				//text3.setText(result);
-				text3.setText(Integer.toString(result));
-			}
-		});
-		add(equalButton);
-		text3=new JTextField(6);
-		add(text3);
+		String sNum="100a";
+		int x=0;
 		
-		pack();
+		try{
+			x=Integer.parseInt(sNum);
+			System.out.println("try block...");
+		}catch(NumberFormatException e){
+			System.out.println("Wrong number");
+			x=Integer.MAX_VALUE;
+		}		
+		System.out.println("End. "+x);
 	}
 }
 
-class example{
-	public static void main(String...args){
-		new Calculator().setVisible(true);
-	}
-}
